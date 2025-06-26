@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O'Luxe Boutique</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --rose-pastel: #f4c2c2;
+      --rose-pastel-dark: #d99b9b;
+      --text-color: #7b5858;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/004/734/351/large_2x/interior-of-fashion-store-modern-clothing-store-free-photo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--rose-pastel);
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+    }
+
+    .logo-slogan {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 70px;
+      height: 70px;
+      fill: #b76e79;
+    }
+
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin: 0;
+      color: #b76e79;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .logo-text p {
+      margin: 0;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: #8c5a5e;
+      margin-top: 5px;
+    }
+
+    .nav-search-container {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--text-color);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #b76e79;
+    }
+
+    form.search-form {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    form.search-form input[type="search"] {
+      padding: 5px 10px;
+      border: 2px solid var(--rose-pastel-dark);
+      border-radius: 25px;
+      outline: none;
+      width: 180px;
+      font-size: 1rem;
+    }
+
+    form.search-form button {
+      background-color: var(--rose-pastel);
+      border: 2px solid var(--rose-pastel-dark);
+      border-radius: 50%;
+      padding: 6px 9px;
+      cursor: pointer;
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    form.search-form button:hover {
+      background-color: #b76e79;
+      border-color: #8c5a5e;
+      color: white;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      max-width: 1200px;
+      margin: 30px auto;
+      border-radius: 10px;
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+      transition: transform 0.3s ease;
+      height: 100%;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(183, 110, 121, 0.5);
+    }
+
+    .product-card img {
+      border-radius: 15px 15px 0 0;
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .product-card .card-body {
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-card .btn-buy {
+      background-color: var(--rose-pastel);
+      border: none;
+      color: var(--text-color);
+      font-weight: 700;
+      margin-top: auto;
+      cursor: pointer;
+    }
+
+    .product-card .btn-buy:hover {
+      background-color: #b76e79;
+      color: #fff;
+    }
+
+    footer {
+      background-color: var(--rose-pastel);
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #6a4a4a;
+      font-weight: 500;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: #b76e79;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #8c5a5e;
+    }
+
+    /* Nouveau: style pour le filtre de tri */
+    #filter-container {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #filter-container select {
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--rose-pastel-dark);
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: rgb(207, 187, 187);
+      color: var(--text-color);
+      min-width: 150px;
+    }
+
+    /* Panier */
+    #cart {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--rose-pastel);
+      border-radius: 50px;
+      padding: 8px 18px;
+      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.7);
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+      user-select: none;
+    }
+
+    #cart i {
+      font-size: 1.3rem;
+    }
+
+    #cart-count {
+      background: #b76e79;
+      color: white;
+      font-size: 0.9rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      min-width: 22px;
+      text-align: center;
+    }
+
+    /* Modal produit détail */
+    .modal-img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      max-height: 400px;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--rose-pastel-dark);
+      margin-bottom: 10px;
+    }
+
+    /* Conteneur horizontal pour sections Parfum & Maquillage et Robe élégante sur mesure */
+    .side-by-side-sections {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .section-container {
+      flex: 1 1 500px;
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+    }
+
+    .section-container h2 {
+      text-align: center;
+      color: var(--rose-pastel-dark);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    .row-cols-1 > .col {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .side-by-side-sections {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-container {
+        max-width: 100%;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container, .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+      }
+      #filter-container {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-slogan">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="10" fill="#b76e79"/><path fill="#f7d1d1" d="M32 2 L26 20 L14 18 L22 28 L12 38 L26 34 L32 52 L38 34 L52 38 L42 28 L50 18 L38 20 Z"/></svg>
+        <div class="logo-text">
+          <h1>O'Luxe</h1>
+          <p>S'habiller est un mode de vie</p>
+        </div>
+      </div>
+      <div class="nav-search-container">
+        <nav>
+          <a href="#products">Produits</a>
+          <a href="#perfumes">Parfum & Maquillage</a>
+          <a href="#robes">Elégance sur mesure</a>
+          <a href="#about">À propos</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <form class="search-form">
+          <input type="search" placeholder="Rechercher un article" />
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Panier visible -->
+  <div id="cart" title="Voir le panier">
+    <i class="fas fa-shopping-cart"></i> Panier <span id="cart-count">0</span>
+  </div>
+
+  <main>
+    <!-- Filtre de tri simple -->
+    <div id="filter-container" class="container">
+      <select id="category-filter" aria-label="Filtrer par catégorie">
+        <option value="all">Toutes catégories</option>
+        <option value="vetements">Vêtements</option>
+        <option value="accessoires">Accessoires</option>
+        <option value="parfums">Parfums</option>
+      </select>
+    </div>
+
+    <!-- Section produits habituels -->
+    <section id="products" class="container">
+      <h2>Nos Produits</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="products-list">
+        <!-- Produits vêtements et accessoires -->
+        <div class="col product-item" data-category="vetements">
+          <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Robe élégante" />
+            <div class="card-body">
+              <h5 class="card-title">Chic Décountractée</h5>
+              <p class="card-text">Alliez élégance et confort avec notre sélection raffinée, pensée pour sublimer votre style au quotidien. Des pièces modernes, fluides et sophistiquées, parfaites pour briller sans effort.</p>
+              <button class="btn btn-buy">Acheter maintenant</button>
+            </div>
+          </div>
+        </div>
+        <div class="col product-item" data-category="accessoires">
+          <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+            <img src="https://images.pexels.com/photos/27035625/pexels-photo-27035625.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Sac à main luxe" />
+            <div class="card-body">
+              <h5 class="card-title">Sac à main et Chaussures de luxe</h5>
+              <p class="card-text">Découvrez l’alliance parfaite entre savoir-faire d’exception et design contemporain. Chaque sac et paire de chaussures incarne raffinement et exclusivité, pour une allure inoubliable.</p>
+              <button class="btn btn-buy">Acheter maintenant</button>
+            </div>
+          </div>
+        </div>
+        <div class="col product-item" data-category="vetements">
+          <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+            <img src="https://images.pexels.com/photos/15987238/pexels-photo-15987238.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Hijabi Girl" />
+            <div class="card-body">
+              <h5 class="card-title">Chic Hijabi Girl</h5>
+              <p class="card-text">Exprimez votre style avec grâce et modernité. Des pièces spécialement pensées pour sublimer la femme hijabi, alliant tendances actuelles et raffinement intemporel.</p>
+              <button class="btn btn-buy">Acheter maintenant</button>
+            </div>
+          </div>
+        </div>
+        <div class="col product-item" data-category="accessoires">
+          <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+            <img src="https://images.pexels.com/photos/27549321/pexels-photo-27549321.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Accessoires de luxe" />
+            <div class="card-body">
+              <h5 class="card-title">Accessoire et montre de luxe</h5>
+              <p class="card-text">Sublimez chaque instant avec des accessoires d’exception. Nos montres et bijoux allient précision, élégance et design pour un éclat incomparable.</p>
+              <button class="btn btn-buy">Acheter maintenant</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Parfum & Maquillage et Robe élégante sur mesure côte à côte -->
+    <div class="side-by-side-sections container">
+
+      <section id="perfumes" class="section-container">
+        <h2>Parfum & Maquillage</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="perfumes-list">
+          <div class="col product-item" data-category="parfums">
+            <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80" alt="Parfum Floral" />
+              <div class="card-body">
+                <h5 class="card-title">Maquillage & Soins</h5>
+                <p class="card-text">Révélez votre beauté naturelle grâce à notre sélection haut de gamme. Des soins délicats et un maquillage sophistiqué pour un éclat lumineux et une peau parfaitement sublimée.</p>
+                <button class="btn btn-buy">Acheter maintenant</button>
+              </div>
+            </div>
+          </div>
+          <div class="col product-item" data-category="parfums">
+            <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+              <img src="https://images.pexels.com/photos/965993/pexels-photo-965993.jpeg" alt="Parfum pailleté rose" />
+              <div class="card-body">
+                <h5 class="card-title">Parfum </h5>
+                <p class="card-text">Éveillez vos sens avec nos fragrances exclusives, véritables œuvres d’art olfactives. Des notes raffinées pour une signature élégante et inoubliable.</p>
+                <button class="btn btn-buy">Acheter maintenant</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="robes" class="section-container">
+        <h2>Elégance sur mesure</h2>
+        <div class="row row-cols-1 g-4" id="robes-list">
+          <div class="col product-item" data-category="vetements">
+            <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+              <img src="https://images.pexels.com/photos/291738/pexels-photo-291738.jpeg" />
+              <div class="card-body">
+                <h5 class="card-title">Specialbride</h5>
+                <p class="card-text">Pour le jour unique, des créations d’exception qui incarnent élégance et raffinement. Mettez en lumière votre beauté avec des pièces pensées pour célébrer votre moment d’exception.</p>
+                <button class="btn btn-buy">Acheter maintenant</button>
+              </div>
+            </div>
+          </div>
+          <div class="col product-item" data-category="vetements">
+            <div class="card product-card h-100" tabindex="0" role="button" aria-pressed="false">
+              <img src="https://images.pexels.com/photos/1566435/pexels-photo-1566435.jpeg" alt="Robe élégante sur mesure 2" />
+              <div class="card-body">
+                <h5 class="card-title">Robe Sur Mesure </h5>
+                <p class="card-text">Chaque détail est pensé pour créer une robe unique, reflet parfait de votre personnalité pour les moments spéciaux. L’alliance du savoir-faire artisanal et du design moderne pour une élégance personnalisée.</p>
+                <button class="btn btn-buy">Acheter maintenant</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 O'Luxe Boutique - Tous droits réservés</p>
+      <div class="social-icons" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="X"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
